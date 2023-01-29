@@ -1,2 +1,4 @@
 # Minesweeper-2.0
-test.
+
+### Dependencies
+ - pygame 2.1.2
