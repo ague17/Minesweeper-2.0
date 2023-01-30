@@ -35,11 +35,8 @@ def sum_mines(g_board):
                 for j_add in [-1, 0, 1]:
                     if i+i_add>=0 and i+i_add<x_len and j+j_add>=0 and j+j_add<y_len:
                         counter=counter+g_board[i+i_add][j+j_add]
-                    if i_add==0 and j_add==0:
-                        counter=counter-g_board[i+i_add][j+j_add]
-                        continue
 
-            s_board[i][j]=counter
+            s_board[i][j]=counter-g_board[i][j]
     return(s_board)
 
 # test_board_2 = [[1,1,0,0], [0,1,0,0], [0,0,1,0],[0,0,0,1]]
