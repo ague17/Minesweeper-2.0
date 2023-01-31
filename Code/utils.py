@@ -39,9 +39,9 @@ def sum_mines(g_board):
             s_board[i][j]=counter-g_board[i][j]
     return(s_board)
 
-# test_board_2 = [[1,1,0,0], [0,1,0,0], [0,0,1,0],[0,0,0,1]]
-# for i in range(len(test_board_2)):
-#     print(test_board_2[i])
-# summed_board=sum_mines(test_board_2)
-# for i in range(len(test_board_2)):
-#     print(summed_board[i])
+test_board_2 = [[1,1,0,0], [0,1,0,0], [0,0,1,0],[0,0,0,1]]
+for i in range(len(test_board_2)):
+    print(test_board_2[i])
+summed_board=sum_mines(test_board_2)
+for i in range(len(test_board_2)):
+    print(summed_board[i])
