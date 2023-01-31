@@ -1,7 +1,8 @@
-
 from random import random
 from time import time
 import numpy as np
+from utils import *
+
 mode=input("Choose mode: (e=easy, m=medium, h=hard): ")
 E_SIZE=10
 M_SIZE=20
@@ -42,8 +43,7 @@ state=0
 while state==0:
     chosen_cell=input("Enter the cell you want to discover (example: A3): ")
     #tendríamos que protegerlo, dentro del rango de C_SIZE
-    x=ord(chosen_cell[0])-65
-    y=int(chosen_cell[1])-1
+    x, y = cell2coords(chosen_cell)
 
     #perder
     if g_board[x][y]==1:
