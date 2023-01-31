@@ -11,14 +11,12 @@ M_DENS=0.15
 M_DENS_TOL=0.02
 
 #set C_SIZE (chosen size)
-match mode:
-    case "e":
-        C_SIZE=E_SIZE
-    case "m":
-        C_SIZE=M_SIZE
-    case "h":
-        C_SIZE=H_SIZE
-
+if mode=="e": C_SIZE=E_SIZE
+elif mode=="m": C_SIZE=M_SIZE
+elif mode=="h": C_SIZE=H_SIZE
+else:
+    print("Invalid mode chosen. Quitting")
+    quit()
 #Initialize boards, "game" and "player" boards
 num_mines=0
 while num_mines>(M_DENS+M_DENS_TOL)*C_SIZE*C_SIZE or num_mines<(M_DENS-M_DENS_TOL)*C_SIZE*C_SIZE:
