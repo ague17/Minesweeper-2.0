@@ -1,7 +1,8 @@
-
 from random import random
 from time import time
 import numpy as np
+from utils import *
+
 mode=input("Choose mode: (e=easy, m=medium, h=hard): ")
 E_SIZE=10
 M_SIZE=20
@@ -11,14 +12,12 @@ M_DENS=0.15
 M_DENS_TOL=0.02
 
 #set C_SIZE (chosen size)
-match mode:
-    case "e":
-        C_SIZE=E_SIZE
-    case "m":
-        C_SIZE=M_SIZE
-    case "h":
-        C_SIZE=H_SIZE
-
+if mode=="e": C_SIZE=E_SIZE
+elif mode=="m": C_SIZE=M_SIZE
+elif mode=="h": C_SIZE=H_SIZE
+else:
+    print("Invalid mode chosen. Quitting")
+    quit()
 #Initialize boards, "game" and "player" boards
 num_mines=0
 while num_mines>(M_DENS+M_DENS_TOL)*C_SIZE*C_SIZE or num_mines<(M_DENS-M_DENS_TOL)*C_SIZE*C_SIZE:
@@ -44,8 +43,7 @@ state=0
 while state==0:
     chosen_cell=input("Enter the cell you want to discover (example: A3): ")
     #tendríamos que protegerlo, dentro del rango de C_SIZE
-    x=ord(chosen_cell[0])-65
-    y=int(chosen_cell[1])-1
+    x, y = cell2coords(chosen_cell)
 
     #perder
     if g_board[x][y]==1:
