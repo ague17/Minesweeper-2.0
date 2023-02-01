@@ -50,14 +50,6 @@ def sum_mines(g_board):
             s_board[i][j]=counter-g_board[i][j]
     return(s_board)
 
-<<<<<<< HEAD
-test_board_2 = [[1,1,0,0], [0,1,0,0], [0,0,1,0],[0,0,0,1]]
-for i in range(len(test_board_2)):
-    print(test_board_2[i])
-summed_board=sum_mines(test_board_2)
-for i in range(len(test_board_2)):
-    print(summed_board[i])
-=======
 # test_board_2 = [[1,1,0,0], [0,1,0,0], [0,0,1,0],[0,0,0,1]]
 # print_pboard(test_board_2, False)
 # summed_board=sum_mines(test_board_2)
@@ -74,4 +66,3 @@ def cell2coords(cell):
     x = ord(cell[0])-65
     y = int(cell[1:])-1
     return (x,y)
->>>>>>> refs/remotes/origin/main
