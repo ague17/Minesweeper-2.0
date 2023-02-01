@@ -8,7 +8,7 @@ E_SIZE=10
 M_SIZE=20
 H_SIZE=50
 C_SIZE=0
-M_DENS=0.05
+M_DENS=0.04
 M_DENS_TOL=0.02
 
 #set C_SIZE (chosen size)
@@ -40,19 +40,30 @@ discovered_cells=0
 state=0
 
 print_pboard(p_board, False)
+print("Enter the cell you want to discover (example: A3). Type a '#' before it \
+to flag that cell.")
 while state==0:
-    chosen_cell=input("Enter the cell you want to discover (example: A3): ")
+    chosen_cell=input("Select cell: ")
     #tendríamos que protegerlo, dentro del rango de C_SIZE
+    if chosen_cell[0]=="#":
+        chosen_cell=chosen_cell[1:]
+        x, y = cell2coords(chosen_cell)
+        if p_board[x][y]!="■":
+            continue
+        p_board[x][y]="#"
+        print_pboard(p_board, False)
+        continue
     x, y = cell2coords(chosen_cell)
     #perder
-    if g_board[x][y]=="X":
+    if g_board[x][y]==1:
         state=-1
+        print("HAS PERDIDO!!!")
         break
     #efecto de descubrir
-    new_cells_discovered = 0
     new_cells_discovered = explore(x, y, s_board, p_board)
     discovered_cells = discovered_cells + new_cells_discovered
     print_pboard(p_board, False)
+    print("Cells to discover ", C_SIZE*C_SIZE-num_mines-discovered_cells)
     #ganar
     if discovered_cells==C_SIZE*C_SIZE-num_mines:
         print("HAS GANADO!!!")

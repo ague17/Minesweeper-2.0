@@ -67,30 +67,31 @@ def sum_mines(g_board):
 # print_pboard(summed_board, False)
 
 def explore(x, y, s_board, p_board):
-	'''
-	The *explore* function takes coordinates, the s_board and the p_board and
-	recursively explores the cells with a zero in them and their neighbours.
+    '''
+    The *explore* function takes coordinates, the s_board and the p_board and
+    recursively explores the cells with a zero in them and their neighbours.
 
-	:param x: integer x, coordinate in the game board.
-	:param y: integer y, coordinate in the game board.
-	:param s_board: python 2D array with the board uncovered and mines calculated.
-	:param p_board: python 2D array with the board as seen by the player.
-	:return: Returns the number of new cells.
-	'''
-	new_cells = 0
-	if p_board[x][y] != "■":
-		#print("Cell already discovered")
-		return new_cells
-	if s_board[x][y] != 0:
-		p_board[x][y] = s_board[x][y]
-		new_cells += 1
-		return new_cells
-	p_board[x][y] = "⬚"
-	if x+1 < len(s_board): new_cells += explore(x+1, y, s_board, p_board)
-	if x-1 >= 0: new_cells += explore(x-1, y, s_board, p_board)
-	if y+1 < len(s_board[0]): new_cells += explore(x, y+1, s_board, p_board)
-	if y-1 >= 0: new_cells += explore(x, y-1, s_board, p_board)
-	return new_cells
+    :param x: integer x, coordinate in the game board.
+    :param y: integer y, coordinate in the game board.
+    :param s_board: python 2D array with the board uncovered and mines calculated.
+    :param p_board: python 2D array with the board as seen by the player.
+    :return: Returns the number of new cells.
+    '''
+    new_cells = 0
+    if p_board[x][y] != "■":
+        #print("Cell already discovered")
+        return new_cells
+    if s_board[x][y] != 0:
+        p_board[x][y] = s_board[x][y]
+        new_cells += 1
+        return new_cells
+    new_cells += 1
+    p_board[x][y] = "⬚"
+    if x+1 < len(s_board): new_cells += explore(x+1, y, s_board, p_board)
+    if x-1 >= 0: new_cells += explore(x-1, y, s_board, p_board)
+    if y+1 < len(s_board[0]): new_cells += explore(x, y+1, s_board, p_board)
+    if y-1 >= 0: new_cells += explore(x, y-1, s_board, p_board)
+    return new_cells
 
 def cell2coords(cell):
     '''
