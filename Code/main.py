@@ -44,13 +44,16 @@ while state==0:
     chosen_cell=input("Enter the cell you want to discover (example: A3): ")
     #tendríamos que protegerlo, dentro del rango de C_SIZE
     x, y = cell2coords(chosen_cell)
-
     #perder
-    if g_board[x][y]==1:
+    if g_board[x][y]=="X":
         state=-1
         break
+    #efecto de descubrir
+        # new_cells_discovered=0
+        # new_cells_discovered=explore(x, y, s_board, p_board)
+        # cells_discovered=cells_discovered+new_cells_discovered
     #ganar
-    if g_board[x][y]==0:
-        pass
+    if cells_discovered==C_SIZE*C_SIZE-num_mines:
+        print("HAS GANADO!!!")
         #if discovered_cells==C_SIZE*C_SIZE-
     break

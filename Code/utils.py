@@ -33,6 +33,15 @@ def print_pboard(pboard, debug):
     print("\n")
 
 def sum_mines(g_board):
+    '''
+    The *sum_mines* function goes through all the cells of g_board, and
+    calculates the number of mines each cell has around itself. The new board
+    s_board records that number of each cell.
+
+    :param g_board: A python 2D array containing the board's information.
+    :return: s_board: A python 2d array containing the values of mines around
+    each cell.
+    '''
     x_len = len(g_board)
     y_len = len(g_board[0])
     s_board = [[0  for j in range(y_len)] for i in range(x_len)]
