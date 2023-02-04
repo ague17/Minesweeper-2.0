@@ -66,7 +66,7 @@ def sum_mines(g_board):
 # summed_board=sum_mines(test_board_2)
 # print_pboard(summed_board, False)
 
-def explore(x, y, s_board, p_board):
+def explore(x, y, s_board, p_board, tablero):
     '''
     The *explore* function takes coordinates, the s_board and the p_board and
     recursively explores the cells with a zero in them and their neighbours.
@@ -83,14 +83,16 @@ def explore(x, y, s_board, p_board):
         return new_cells
     if s_board[x][y] != 0:
         p_board[x][y] = s_board[x][y]
+        tablero[x][y].configure(text=s_board[x][y], bg="gray")
         new_cells += 1
         return new_cells
     new_cells += 1
     p_board[x][y] = "⬚"
-    if x+1 < len(s_board): new_cells += explore(x+1, y, s_board, p_board)
-    if x-1 >= 0: new_cells += explore(x-1, y, s_board, p_board)
-    if y+1 < len(s_board[0]): new_cells += explore(x, y+1, s_board, p_board)
-    if y-1 >= 0: new_cells += explore(x, y-1, s_board, p_board)
+    tablero[x][y].configure(text="  ", bg="gray")
+    if x+1 < len(s_board): new_cells += explore(x+1, y, s_board, p_board, tablero)
+    if x-1 >= 0: new_cells += explore(x-1, y, s_board, p_board, tablero)
+    if y+1 < len(s_board[0]): new_cells += explore(x, y+1, s_board, p_board, tablero)
+    if y-1 >= 0: new_cells += explore(x, y-1, s_board, p_board, tablero)
     return new_cells
 
 def cell2coords(cell):

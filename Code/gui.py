@@ -1,5 +1,10 @@
 import tkinter as tk
 
+tablero = []
+def which_button(button_press):
+    x, y = button_press
+    tablero[x][y].configure(bg="red", fg="yellow")
+
 #conventional window name
 root = tk.Tk()
 #window title
@@ -24,12 +29,15 @@ mainFrame.pack(expand=1) #Configurar el metodo pack()
 mainFrame.config(width="150", height="150")
 
 #place thing in frame:
-C_SIZE_R=10
-C_SIZE_C=15
+C_SIZE_R = 15
+C_SIZE_C = 10
 for i in range(C_SIZE_R):
+    fila_tablero = []
     for j in range(C_SIZE_C):
-        button = tk.Button(mainFrame, text="X", font=("Arial",10))
-        button.grid(row=i, column=j)
-
+        button = tk.Button(mainFrame, text=" ", font=("Arial",10), \
+        command=lambda m=[i,j]: which_button(m))
+        fila_tablero.append(button)
+        button.grid(row=j, column=i)
+    tablero.append(fila_tablero)
 #run root
 root.mainloop()
